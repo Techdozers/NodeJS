@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    script.
+        $(document).ready(function(){
+           $('#updateEmployee').click(function(){
+              // $('form#manageEmployee').attr('method','put');
+               $('form#manageEmployee').attr('action','/employees/update');
+               $('form#manageEmployee').submit();
+           });
+           $('#displayEmployee').click(function(){
+              // $('form#manageEmployee').attr('method','put');
+               $('form#manageEmployee').attr('action','/employees');
+               $('form#manageEmployee').submit();
+           }); 
+        });
+    input(type="hidden", id="toasterStatus", value= eventStatus)
+    input(type="hidden", id="toastermessage", value= message)
+    div 
+        h1 Employee Management
+        form(name="manageEmployee", id="manageEmployee", method="post", action="/employees/create")
+            table.input
+                tr 
+                    td Employee Id
+                    td 
+                        input(type="text", name="employeeid", value= employee.employeeid)
+                tr 
+                    td Employee Name
+                    td
+                        input(type="text", name="employeename", value= employee.employeename)
+                tr 
+                    td Employee age
+                    td
+                        input(type="text", name="employeeage", value= employee.employeeage)                                        
+            br
+            div.actions(style="align:center")
+                input(type="submit", value="Create Employee")
+                input(type="button", value="Update Employee", id="updateEmployee") 
+                input(type="button", value="Display All Employee", id="displayEmployee") 

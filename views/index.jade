@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  - var x = 5;
+  - var profileName = "Prasanna";
+    div
+      ul 
+        - for (var i=1; i<x; i++) {
+          li= i +". Hi User "  
+        - }
+    p #{profileName}
+    
+    mixin sayVanakam(name)
+      h4= "Good Bye "+ name
+    
+    label Email Address
+    input(type="text")
+    
+    +sayVanakam("PRASANNA")

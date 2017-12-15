@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    div 
+        h1 All Users Details will be here
+
+    - var usersList = [{title: "Mr", hobbies: ["vetti", "play", "oor suthal"], zipcode: 123},{title: "Dr",hobbies: ["operation", "injection", "fees"],zipcode: 999}];
+
+    mixin display-user(user)
+        div 
+            h2= user.title
+            h3 Hobbies are
+            ul
+            each hobby in user.hobbies
+                li= hobby
+            span He is from 
+            span= user.zipcode
+    
+    each userss in usersList
+        +display-user(userss)
+

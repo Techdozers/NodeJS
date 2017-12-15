@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='../stylesheets/styleNew.css')
+    link(rel='stylesheet', href='../stylesheets/style.css')
+    link(rel='stylesheet', href='../stylesheets/w3.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
+
+    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js')
+    script(type='text/javascript', src='http://www.json.org/json2.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='../javascripts/jquery.toaster.js')
+    script.
+      function maketoast (priority, title, message) {
+          $('#toastCode').html("$.toaster({ priority : '" + priority + "', title : '" + title + "', message : '" + message + "'});").hide();
+          $.toaster({ priority : priority, title : title, message : message, settings : { timeout : 4000 } });
+      }
+      $( document ).ready(function() {
+
+          if ($('#toasterStatus').val() == 'success') {
+              maketoast('success','Notice',$('#toastermessage').val());
+          } else if ($('#toasterStatus').val() == 'failure') {
+              maketoast('danger','Notice',$('#toastermessage').val());
+          } else {
+              check='true';
+              //alert('crated status is blank '+$('#createdStatus').val());
+          }
+
+      });
+  body
+    code(id="toastCode")
+    block content
