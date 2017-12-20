@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    form(name="displayEmployee", id="displayEmployee", method="get", action="/CLOUD/employees/create")
+        div 
+            h1 Employees Management
+
+        mixin display-user(employee)
+            tr
+                td= employee.id
+                td= employee.employeeName
+                td= employee.employeeAge
+
+        table
+            thead
+                th Employee ID
+                th Employee Name
+                th Employee Age
+            thead
+            each employee in retrievedData
+                +display-user(employee)
+        
+        input(type="submit", value="Manage Employee")
